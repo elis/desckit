@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assembler</title>
+		<? if (reload) {
+			reload = parseInt(reload);
+				if (reload > 0) {
+					?>
+		<script>
+			setTimeout(function() {
+				document.location.reload();
+			}, <?= reload*1000 ?>)
+		</script>
+					<?
+				}
+		} ?>
+	</head>
+	<body>
+		<h3>Creating... <?= counter ?></h3>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+#editor
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  
+  #activator
+    position: fixed
+    right: 50px
+    top: 50px
+  
+  &.active #activator
+    display: none;
+  
+  #panel
+    position: fixed
+    bottom: 0
+    min-height: 80px
+    left: 0
+    right: 0
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.51, rgb(235,235,235)),
+      color-stop(0.67, rgb(250,250,250))
+    );
+    
+  
+  .cbox
+    background: rgba(80, 80, 210, 0.4)

@@ -1,0 +1,26 @@
+#editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#editor #activator {
+  position: fixed;
+  right: 50px;
+  top: 50px;
+}
+#editor.active #activator {
+  display: none;
+}
+#editor #panel {
+  position: fixed;
+  bottom: 0;
+  min-height: 80px;
+  left: 0;
+  right: 0;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.51, #ebebeb), color-stop(0.67, #fafafa));
+}
+#editor .cbox {
+  background: rgba(80,80,210,0.4);
+}
