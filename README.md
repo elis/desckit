@@ -64,7 +64,20 @@ Since this is being rendered on a WebKit based browser, basically anything that 
 
 ### General Information
 
-At this point the application is in preview/alpha version designed to show the capabilities of this technique. Most of the configuration is hard-coded (like the screen-resolution), you are welcome to change it to fit your needs.
+At this point the application is in preview/alpha version designed to show the capabilities of this technique. Most of the configuration is hard-coded (like the screen-resolution), you are welcome to change it to fit your needs. Some of the modules used are outdated (like datejs), and in general this is a work in progress aimed at hackers rather than the end-user at this point.
+
+## The Future
+
+The goals for this project are:
+
+ 1. Createa community around the project
+ 2. Create a simple and easy to use way to generate custom wallpapers using a Wysiwyg style designer
+ 3. Create modular widgets that could be configured to the users needs and wants
+ 4. Create integration with sites like Github, CSSDeck, jsfiddle along with an internal way to store users styles/designs
+ 5. Create a gallery of designs with ranking so users who are not into creating their own custom design could select an existing design, add or remove certain modules, and use it without hacking any code
+ 6. Provide an easy API to allow use of the software on mobile phones and tablets
+
+This is the very first step, unveiling the concept idea, and showing the very rudimentary capabilities, the next step will be decided by you, the user.
 
 ## Contact
 
