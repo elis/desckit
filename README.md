@@ -3,6 +3,10 @@
 Custom descktop wallpaper generator with NodeJS and PhantomJS
 
 ## Installation
+
+ - Install [Node.js](http://nodejs.org/download/)
+ - Install [PhantomJS](http://phantomjs.org/download.html)
+
 Clone and run the application on your local computer
 
 ```shell
@@ -30,6 +34,20 @@ To display your wallpaper in Windows 7/8 use the built in wallpaper rotation too
  7. Click `Save changes`
 
 If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
+
+
+## Mac OS X Configuration
+
+To display your wallpaper in Mac OSX use the built in wallpaper rotation tool.
+
+ 1. Open `System Preferences`
+ 2. Select `Desktop & Screen Save` (in the top-left area)
+ 3. Click the `+` button to choose a folder
+ 4. Locate and select the `/desckit/walls` directory.
+ 5. Select the `Change picture:` interval make sure `Random order` is not selected
+
+If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
+
 
 ## Custom Scripts
 
