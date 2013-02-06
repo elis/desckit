@@ -3,7 +3,7 @@ var ejs = require('ejs')
 	,	yahooWeather = require('weather')
 	, _ = require('underscore')
 	, http = require('http')
-	, phantomControl = require('phantom/phantomControl');
+	, phantomControl = require( __dirname + '/../lib/phantom/phantomControl');
 
 var counter = 0;
 var counts = {};
