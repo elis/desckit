@@ -4,9 +4,9 @@
   "private": true,
   "main": "app",
   "dependencies": {
+    "datejs": "0.0.2",
     "express": "3.0.0rc5",
     "ejs": "*",
-    "stylus": "*",
-    "datejs": "*"
+    "stylus": "*"
   }
 }
