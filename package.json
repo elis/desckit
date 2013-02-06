@@ -6,7 +6,11 @@
   "dependencies": {
     "datejs": "0.0.2",
     "express": "3.0.0rc5",
-    "ejs": "*",
-    "stylus": "*"
+    "ejs": "~0.8.3",
+    "stylus": "~0.32.0",
+    "facebook-api": "~0.1.2",
+    "github": "~0.1.8",
+    "underscore": "~1.4.4",
+    "weather": "0.0.4"
   }
 }
