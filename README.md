@@ -7,6 +7,8 @@ Custom descktop wallpaper generator with NodeJS and PhantomJS
  - Install [Node.js](http://nodejs.org/download/)
  - Install [PhantomJS](http://phantomjs.org/download.html)
 
+For Windows, please place the .exe on your path.
+
 Clone and run the application on your local computer
 
 ```shell
