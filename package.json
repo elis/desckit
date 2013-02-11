@@ -11,6 +11,8 @@
     "facebook-api": "~0.1.2",
     "github": "~0.1.8",
     "underscore": "~1.4.4",
-    "weather": "0.0.4"
+    "weather": "0.0.4",
+    "commander": "~1.1.1",
+    "request": "~2.12.0"
   }
 }
