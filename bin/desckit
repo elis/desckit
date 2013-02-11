@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+
+// turn on the server
+var app = require(__dirname + '/../app.js');
+
+// used to make requests to the server
+var request = require('request');
+
+var program = require('commander');
+program
+    .version('0.0.0')
+    .option('-I, --interval [seconds]', 'The number of seconds between renders [default: 60]', '60')
+    .option('-S, --style [name]', 'The style of desktop that you want to render [default: wide]', 'wide')
+    // .option('-W, --width', 'The width in pixels of the desktop [default: 1920]', '1920')
+    // .option('-H, --height', 'The height in pixels of the desktop [default: 1080]', '1080')
+    .on('--help', function(){
+        console.log('  Example: \n');
+        console.log('    # to render the foggy desktop every two minutes')
+        console.log('    $ desckit -I 120 -S foggy');
+        console.log('\n');
+    })
+    .parse(process.argv);
+
+// make the request 
+function req(url, cb) {
+    request(url, function(err, res, body) {
+        if (typeof cb === "function") return cb();
+    });
+}
+
+// handle continuous renders
+function continual(url, interval) {
+    req(url, function() {
+        setTimeout(function() {
+            continual(url, interval);
+        }, interval * 1e3);
+    });
+}
+
+
+// build the url to request and add in the style name
+var url = "http://localhost:1280/assemble/";
+url += program.style;
+url += "/render";
+
+// process the program
+if (program.interval) {
+    continual(url, program.interval);
+} else {
+    req(url);
+}
