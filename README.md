@@ -23,7 +23,7 @@ To generate a desktop wallpaper append `render` to the url (like so: `http://loc
 
 There is a simple reload mechanism that will generate the wallpaper in intervals if you append a seconds interval to the end of the url (like so: `http://localhost:1280/assemble/wide/render/60`) which will reload the page once every 60 seconds.
 
-## Windows Configuration
+### Windows Configuration
 
 To display your wallpaper in Windows 7/8 use the built in wallpaper rotation tool.
 
@@ -38,7 +38,7 @@ To display your wallpaper in Windows 7/8 use the built in wallpaper rotation too
 If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
 
 
-## Mac OS X Configuration
+### Mac OS X Configuration
 
 To display your wallpaper in Mac OSX use the built in wallpaper rotation tool.
 
@@ -57,11 +57,14 @@ The application supports custom scripts to be created. To see existing scripts n
 
 ### Script Files
 
-There are currently 3 mandatory script files:
+There are currently 2 mandatory script files:
 
- - `script.ejs` - This is the HTML template for the layout of the descktop wallpaper
- - `script.js` - This is the Server-side(!!) script to be ran when the script is requested. This runs in your NodeJS instance so you can configure it to do whatever you want that is supported by NodeJS
- - `script.styl`- This is the Stylus CSS source file that will generate a `script.css` file when needed
+ - `script.ejs` - This is the HTML template for the layout of the desktop wallpaper.
+ - `script.js` - This is the Server-side(!!) script to be run when the script is requested. This runs in your NodeJS instance so you can configure it to do whatever you want that is supported by NodeJS.
+
+Optionally, you can include more files in scripts:
+
+ - `script.styl`- This is the Stylus CSS source file that will generate a `script.css` file when needed.
 
 Change those files to create your own customized descktop backgrounds.
 
