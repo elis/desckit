@@ -12,7 +12,7 @@ For Windows, please place the `phantomsjs.exe` on your `PATH`.
 Clone and run the application on your local computer
 
 ```shell
-$ git clone git://github.com/elis/desckit.git
+$ git clone git://github.com/weisjohn/desckit.git
 $ cd desckit
 $ npm install
 $ node .
