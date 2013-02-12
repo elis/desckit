@@ -4,11 +4,17 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , assemble = require('./routes/assemble')
   , http = require('http')
   , ejs = require('ejs')
-  , path = require('path');
+  , path = require('path')
+  , debug = require('debug')('desckit')
+
+/**
+ * Our modules
+ */
+var routes = require('./routes')(debug)
+  , assemble = require('./routes/assemble')(debug)
+  ;
 
 require('datejs');
   
@@ -19,7 +25,10 @@ app.configure(function(){
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
     app.use(express.favicon());
-    app.use(express.logger('dev'));
+    app.use(function(req, res, next){
+        debug('%s %s', req.method, req.url);
+        next();
+    });
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('your secret here'));
@@ -41,7 +50,7 @@ app.get('/', routes.index);
 app.get('/assemble/:id?/:render?/:reload?', assemble.test);
 
 http.createServer(app).listen(app.get('port'), function(){
-    console.log("Express server listening on port " + app.get('port'));
+    debug("Express server listening on port " + app.get('port'));
 });
 
 module.exports = app;

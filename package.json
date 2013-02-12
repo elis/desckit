@@ -16,6 +16,7 @@
     "underscore": "~1.4.4",
     "weather": "0.0.4",
     "commander": "~1.1.1",
-    "request": "~2.12.0"
+    "request": "~2.12.0",
+    "debug": "~0.7.2"
   }
 }
