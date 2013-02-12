@@ -111,10 +111,12 @@ Since this is being rendered on a WebKit based browser, basically anything that 
 
 ## Developing 
 
-To see the internals of desckit as it operates, set a bash environment variable for `DEBUG` equal to `desckit`, such as:
+To see the internals of desckit as it operates, set an environment variable for `DEBUG` equal to `desckit`, such as:
 
-```
-$ DEBUG=desckit node app.js
+```shell
+$ DEBUG=desckit node-dev app.js 
+  desckit Express server listening on port 1280 +0ms
+  desckit GET /assemble/foggy/render/10 +1s
 ```
 
 We do this to help the command-line tool version output clean.
