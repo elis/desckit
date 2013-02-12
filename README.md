@@ -69,6 +69,29 @@ Optionally, you can include more files in scripts:
 
 Change those files to create your own customized descktop backgrounds.
 
+## Command Line 
+
+You can run desckit from the command line as well.  This will be the prefered option to run the project in the future.
+
+```
+$ npm install -g desckit
+```
+
+To render the `eli1` script only one time (think cron)
+
+```
+$ desckit -S eli1 
+```
+
+To re-render every two minutes, specify an interval of 120 seocnds:
+
+```
+$ desckit -S eli1 -I 120
+```
+
+This will create a `walls` directory wherever you run the command.
+
+
 # Examples
 
 The two provided examples are `eli1` and `wide`, the main difference is that `wide`-version is created from a wide background image which is scrolled a little bit every time a wallpaper generate, so once it's on desktop it shows a wallpaper that moves just slightly, and creates a more dynamic desktop environment.
