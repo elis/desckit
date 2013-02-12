@@ -109,6 +109,16 @@ Since this is basically a web-page being rendered into a desktop background, the
 
 Since this is being rendered on a WebKit based browser, basically anything that you can think of creating with HTML5 can be rendered onto your desktop.
 
+## Developing 
+
+To see the internals of desckit as it operates, set a bash environment variable for `DEBUG` equal to `desckit`, such as:
+
+```
+$ DEBUG=desckit node app.js
+```
+
+We do this to help the command-line tool version output clean.
+
 ### General Information
 
 At this point the application is in preview/alpha version designed to show the capabilities of this technique. Most of the configuration is hard-coded (like the screen-resolution), you are welcome to change it to fit your needs. Some of the modules used are outdated (like datejs), and in general this is a work in progress aimed at hackers rather than the end-user at this point.
