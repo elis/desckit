@@ -33,7 +33,7 @@
     "debug": "~0.7.2"
   },
   "readmeFilename": "README.md",
-  "description": "Custom descktop wallpaper generator with NodeJS and PhantomJS",
+  "description": "Custom desktop wallpaper generator with NodeJS and PhantomJS",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
