@@ -1,10 +1,23 @@
 {
-  "name": "wallpaper-generator-server",
+  "name": "desckit",
   "version": "0.0.1",
-  "private": true,
   "main": "app",
   "bin": {
     "desckit": "./bin/desckit"
+  },
+  "author": {
+    "name" : "John Weis",
+    "email" : "weis.john@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Eli Sklar",
+      "email": "eli.sklar@gmail.com"
+    },
+    {
+      "name": "John Weis",
+      "email": "weis.john@gmail.com"
+    },
   },
   "dependencies": {
     "datejs": "0.0.2",
@@ -18,5 +31,25 @@
     "commander": "~1.1.1",
     "request": "~2.12.0",
     "debug": "~0.7.2"
-  }
+  },
+  "readmeFilename": "README.md",
+  "gitHead": "6d7b2e25582cc8938d0374696058227a003c9cfd",
+  "description": "Custom descktop wallpaper generator with NodeJS and PhantomJS",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/weisjohn/desckit.git"
+  },
+  "keywords": [
+    "wallpaper",
+    "generator",
+    "dashboard",
+    "phantomjs",
+    "phantom",
+    "express"
+  ],
+  "license": "BSD"
 }
