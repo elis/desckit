@@ -51,8 +51,6 @@ module.exports = function(debug) {
         ejs.renderFile(template, _.extend(locals, Script.locals), function (islike, output) {
             locals.output = output;
             debug('render file args:', arguments);
-            //debug(locals);    
-            // Output is broken :(
             res.render('index', _.extend(locals, Script.locals));
         });
     }
