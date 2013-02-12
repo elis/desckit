@@ -1,6 +1,6 @@
 # Desckit
 
-Custom descktop wallpaper generator with NodeJS and PhantomJS
+Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 ## Installation
 
