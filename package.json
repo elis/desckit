@@ -1,6 +1,6 @@
 {
   "name": "desckit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "app",
   "bin": {
     "desckit": "./bin/desckit"
@@ -33,7 +33,6 @@
     "debug": "~0.7.2"
   },
   "readmeFilename": "README.md",
-  "gitHead": "6d7b2e25582cc8938d0374696058227a003c9cfd",
   "description": "Custom descktop wallpaper generator with NodeJS and PhantomJS",
   "devDependencies": {},
   "scripts": {
