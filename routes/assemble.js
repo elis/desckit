@@ -1,10 +1,9 @@
 // assemble.js
 var ejs = require('ejs')
-    ,   yahooWeather = require('weather')
-    , _ = require('underscore')
-    , http = require('http')
-    , phantomControl = require( __dirname + '/../lib/phantom/phantomControl')
-    ;
+  , _ = require('underscore')
+  , http = require('http')
+  , phantomControl = require( __dirname + '/../lib/phantom/phantomControl')
+  ;
 
 var counter = 0;
 var counts = {};
@@ -57,7 +56,7 @@ module.exports = function(debug) {
             res.render('index', _.extend(locals, Script.locals));
         });
     }
-    
+
     return {
         'test' : test,
         'render' : render,
