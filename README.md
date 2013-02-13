@@ -1,5 +1,6 @@
 # Desckit
 
+![Desckit](https://raw.github.com/elis/desckit/master/public/images/logo.png)
 Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 ## Installation
