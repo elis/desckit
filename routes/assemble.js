@@ -35,15 +35,15 @@ module.exports = function(debug) {
     };
 
     function output(req, res, next) {
-        var template = __dirname + '/../public/scripts/' + req.params.id + '/script.ejs';
+        var template = __dirname + '/../public/descks/' + req.params.id + '/script.ejs';
         var date = new Date();
-        var Script = require(__dirname + '/../public/scripts/' + req.params.id + '/script');
+        var Script = require(__dirname + '/../public/descks/' + req.params.id + '/script');
         
         var locals = _.extend({
             scriptID: req.params.id,
             title: 'Eli\'s Wallpaper Generator',
             time: date.toString('HH:mm'),
-            counter: counts[req.params.id],
+            counter: req.query.counter || counts[req.params.id],
             date: date
         }, req.params);
         Script.update();
