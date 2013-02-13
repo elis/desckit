@@ -1,0 +1,1 @@
+Do not commit pictures into the git repo.

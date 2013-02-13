@@ -1,13 +1,20 @@
 # Desckit
 
-Custom descktop wallpaper generator with NodeJS and PhantomJS
+Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 ## Installation
+
+ - Install [Node.js](http://nodejs.org/download/)
+ - Install [PhantomJS](http://phantomjs.org/download.html)
+
+For Windows, please place the `phantomsjs.exe` on your `PATH`.
+
 Clone and run the application on your local computer
 
 ```shell
-$ git clone git://github.com/elis/desckit.git
+$ git clone git://github.com/weisjohn/desckit.git
 $ cd desckit
+$ npm install
 $ node .
 ```
 
@@ -17,7 +24,7 @@ To generate a desktop wallpaper append `render` to the url (like so: `http://loc
 
 There is a simple reload mechanism that will generate the wallpaper in intervals if you append a seconds interval to the end of the url (like so: `http://localhost:1280/assemble/wide/render/60`) which will reload the page once every 60 seconds.
 
-## Windows Configuration
+### Windows Configuration
 
 To display your wallpaper in Windows 7/8 use the built in wallpaper rotation tool.
 
@@ -31,19 +38,58 @@ To display your wallpaper in Windows 7/8 use the built in wallpaper rotation too
 
 If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
 
+### Mac OS X Configuration
+
+To display your wallpaper in Mac OSX use the built in wallpaper rotation tool.
+
+ 1. Open `System Preferences`
+ 2. Select `Desktop & Screen Save` (in the top-left area)
+ 3. Click the `+` button to choose a folder
+ 4. Locate and select the `/desckit/walls` directory.
+ 5. Select the `Change picture:` interval make sure `Random order` is not selected
+
+If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
+
+
 ## Custom Scripts
 
 The application supports custom scripts to be created. To see existing scripts navigate to `/desckit/public/scripts/`. Right now there are two scripts, `eli1` and `wide`.
 
 ### Script Files
 
-There are currently 3 mandatory script files:
+There are currently 2 mandatory script files:
 
- - `script.ejs` - This is the HTML template for the layout of the descktop wallpaper
- - `script.js` - This is the Server-side(!!) script to be ran when the script is requested. This runs in your NodeJS instance so you can configure it to do whatever you want that is supported by NodeJS
- - `script.styl`- This is the Stylus CSS source file that will generate a `script.css` file when needed
+ - `script.ejs` - This is the HTML template for the layout of the desktop wallpaper.
+ - `script.js` - This is the Server-side(!!) script to be run when the script is requested. This runs in your NodeJS instance so you can configure it to do whatever you want that is supported by NodeJS.
+
+Optionally, you can include more files in scripts:
+
+ - `script.styl`- This is the Stylus CSS source file that will generate a `script.css` file when needed.
 
 Change those files to create your own customized descktop backgrounds.
+
+## Command Line 
+
+You can run desckit from the command line as well.  This will be the prefered option to run the project in the future.
+
+```
+$ npm install -g desckit
+```
+
+To render the `eli1` script only one time (think cron)
+
+```
+$ desckit -S eli1 
+```
+
+To re-render every two minutes, specify an interval of 120 seocnds:
+
+```
+$ desckit -S eli1 -I 120
+```
+
+This will create a `walls` directory wherever you run the command.
+
 
 # Examples
 
@@ -61,6 +107,18 @@ Since this is basically a web-page being rendered into a desktop background, the
  - Use parallax effects
 
 Since this is being rendered on a WebKit based browser, basically anything that you can think of creating with HTML5 can be rendered onto your desktop.
+
+## Developing 
+
+To see the internals of desckit as it operates, set an environment variable for `DEBUG` equal to `desckit`, such as:
+
+```shell
+$ DEBUG=desckit node-dev app.js 
+  desckit Express server listening on port 1280 +0ms
+  desckit GET /assemble/foggy/render/10 +1s
+```
+
+We do this to help the command-line tool version output clean.
 
 ### General Information
 
@@ -86,3 +144,8 @@ Created by Eli Sklar
 Email: eli.sklar@gmail.com
 
 Twitter: @EliSklar
+
+## Contributors
+
+ - [Eli Sklar](http://github.com/elis)
+ - [John Weis](http://github.com/weisjohn)
