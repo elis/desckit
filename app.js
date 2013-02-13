@@ -14,6 +14,7 @@ var express = require('express')
  */
 var routes = require('./routes')(debug)
   , assemble = require('./routes/assemble')(debug)
+  , helpers = require('./desckit.helpers')(debug)
   ;
 
 require('datejs');
@@ -47,10 +48,17 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/assemble/:id?/:render?/:reload?', assemble.test);
+app.get('/descks', routes.descks);
+app.get('/assemble/:id?/:render?/:reload?', assemble.request);
 
 http.createServer(app).listen(app.get('port'), function(){
     debug("Express server listening on port " + app.get('port'));
+    if (!process.env.DEBUG) {
+      // Open the base URL
+      var open = require('open');
+      open('http://' + process.env.COMPUTERNAME + (app.get('port') != 80 ? ':'+app.get('port') : ''));
+    }
 });
 
 module.exports = app;
+ 

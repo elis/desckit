@@ -10,7 +10,7 @@ var counts = {};
 
 module.exports = function(debug) {
 
-    function test(req, res, next) {
+    function request(req, res, next) {
         if (req.params.id) {
             if (!(req.params.id in counts)) counts[req.params.id] = 0;
             
@@ -56,7 +56,7 @@ module.exports = function(debug) {
     }
 
     return {
-        'test' : test,
+        'request' : request,
         'render' : render,
         'output' : output
     }
