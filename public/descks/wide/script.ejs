@@ -1,0 +1,36 @@
+<style>
+      body {
+            background-image: url('/scripts/<?= id ?>/quivertrees_breuer_3000.jpg');
+            background-position: <?= (counter % 10)*10 ?>% bottom;
+      }
+</style>
+
+      <div id="time" class="prop">
+      	<?= date.toString("HH:mm:ss") ?>
+      </div>
+      <div id="date" class="prop">
+      	<?= date.toString("dddd MMM ddS") ?>
+      </div>
+
+      
+      <? if (typeof weather == 'object' && weather.temp) { ?>
+      <div id="weather" class="wc-<?= weather.code ?>">
+            <img src="/images/weather/<?= weather.textcode ?>.png" class="icon" />
+            <span class="now"><?= weather.temp ?></span>
+            <span class="high"><?= weather.high ?></span>
+            <span class="low"><?= weather.low ?></span>
+            <span class="text"><?= weather.text ?></span>
+            <span class="location"><?= weather.location ?></span>
+      </div>
+      <? } ?>
+      
+      
+      <? if (typeof reddit != 'undefined' && reddit.data && reddit.data.name) { ?>
+      <div id="reddit" class="<?= reddit.data.has_mail ? 'has-mail' : '' ?>">
+            <span class="name"><?= reddit.data.name ?></span>
+            <span class="link-karma"><?= reddit.data.link_karma ?></span>
+            <span class="comment-karma"><?= reddit.data.comment_karma ?></span>
+      </div>
+      <? } ?>
+
+      

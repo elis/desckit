@@ -1,0 +1,54 @@
+#main #intro {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/images/project_papper.png");
+  z-index: 1;
+}
+#main #intro::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+  background: #fff;
+  background: -moz-radial-gradient(center, ellipse cover, #fff 0%, #000 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #fff), color-stop(100%, #000));
+  background: -webkit-radial-gradient(center, ellipse cover, #fff 0%, #000 100%);
+  background: -o-radial-gradient(center, ellipse cover, #fff 0%, #000 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #fff 0%, #000 100%);
+  background: radial-gradient(ellipse at center, #fff 0%, #000 100%);
+  opacity: 0.2;
+}
+#main #intro #logo {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20%;
+}
+#main .navbar {
+  background: none;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+#main .navbar .brand {
+  background: url("/images/logo-small-bw.png") 10px 50% no-repeat;
+  padding-left: 42px;
+}
+#main .navbar .brand:hover,
+#main .navbar .brand.active {
+  background-image: url("/images/logo-small.png");
+}
+#main .container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+#main .container .content {
+  padding: 30px;
+}
