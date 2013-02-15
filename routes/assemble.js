@@ -35,6 +35,8 @@ module.exports = function(debug) {
     };
 
     function output(req, res, next) {
+        var desck = get
+        
         var template = __dirname + '/../public/descks/' + req.params.id + '/script.ejs';
         var date = new Date();
         var Script = require(__dirname + '/../public/descks/' + req.params.id + '/script');
@@ -51,7 +53,7 @@ module.exports = function(debug) {
         ejs.renderFile(template, _.extend(locals, Script.locals), function (islike, output) {
             locals.output = output;
             debug('render file args:', arguments);
-            res.render('index', _.extend(locals, Script.locals));
+            res.render('desckit-page', _.extend(locals, Script.locals));
         });
     }
 

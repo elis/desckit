@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><?= title ?></title>
+    <link rel='stylesheet' href='/lib/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src='/javascripts/jquery-1.8.2.min.js'></script>
+    <script src='/lib/bootstrap/js/bootstrap.min.js'></script>
+    
+    <? if (scriptID) { ?>
+      <link rel='stylesheet' href='/descks/<?= scriptID ?>/script.css' />
+    <? } ?>
+    
+  </head>
+  <body>
+    <section id="wallpaper" class="stage">
+      
+    <?- output ?>
+    </section>
+  </body>
+</html>

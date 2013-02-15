@@ -41,6 +41,7 @@ app.configure(function(){
 
     ejs.open = '<?';
     ejs.close = '?>';
+    
 });
 
 app.configure('development', function(){
@@ -61,4 +62,3 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 module.exports = app;
- 
