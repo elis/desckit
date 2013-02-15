@@ -35,7 +35,10 @@ module.exports = function(debug) {
     };
 
     function output(req, res, next) {
-        var desck = get
+        var helpers = require(__dirname + '/../desckit.helpers')(debug)
+            , desck = helpers.getDesck(req.params.id)
+        ;
+        
         
         var template = __dirname + '/../public/descks/' + req.params.id + '/script.ejs';
         var date = new Date();

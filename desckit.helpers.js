@@ -13,6 +13,8 @@ module.exports = function (debug) {
     }
   ;
   function getDescks (dir, callback) {
+    var callback = ('function' == typeof callback) ? callback : function () {};
+    
     fs.readdir(dir, function (err, result) {
       if (err || (!result || result.length < 1)) { callback(err, null); return; }
       var i, list = [];
@@ -40,7 +42,9 @@ module.exports = function (debug) {
   }
   
   function getDesck (path, callback) {
-    if (path in descks) callback(null, descks[path]);
+    var callback = ('function' == typeof callback) ? callback : function () {};
+    
+    if (path in descks) { callback(null, descks[path]); return; }
     
     var desck = function(){}
       , path = path.trim('/').trim('\\')
@@ -86,6 +90,7 @@ module.exports = function (debug) {
   }
   
   return {
-    getDescks: getDescks
+    getDescks: getDescks,
+    getDesck: getDesck
   }
 }
