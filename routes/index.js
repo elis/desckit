@@ -9,7 +9,7 @@ module.exports = function(debug) {
     var data = {
         currentPage: ''
       }
-      , helpers = require('../desckit.helpers')(debug)
+      , helpers = require('../lib/desckit.helpers')(debug)
       ;
     function index(req, res) {
         res.render('desckit', _.extend({}, data, {currentPage: 'home'}));

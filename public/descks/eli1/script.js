@@ -1,51 +1,46 @@
 // script.js
 var	yahooWeather = require('weather')
-	, http = require('http');
+	, http = require('http')
+	, debug = require('debug')('desckit:eli1');
 	
 	
-var settings = {
-	updateInterval: 10*60*1000,
-	weatherConfig: {
-		lat: 32.0975,
-		long: 34.8139,
-		name: 'Tel Aviv, Israel'
-	},
-	bitcoinConfig: {
-		
-	},
-	redditConfig: {
-		user: 'the-ace'
-	},
-	
-	something: 'else'
-};
+var settings = {};;
 
-var Elis = {
-	locals: {},
+var Elis = module.exports = {
 	_timeout: null,
-	update: function () {
+	update: function (callback) {
 		var self = this,
 			date = new Date(),
 			now = date.getTime();
-			
-		console.log(now, self.last_update, settings.updateInterval);
+		
+		settings = this.conf;
+		
+		this.locals.date = date;
+		
 		if (now < self.last_update + settings.updateInterval) {
 			return true;
 		}
 		self.last_update = now;
 		
-		getWeather();
-		getReddit();
-		getBitcoin();
+		getWeather(function (weather) {
+			self.locals.weather = weather;
+		});
+		getReddit(function (reddit) {
+			self.locals.reddit = reddit; 
+		});
+		getBitcoin(function (bitcoin) {
+			self.locals.bitcoin = bitcoin;
+		});
 		
 		console.log('getting them...');
 		
-		clearTimeout(self._timeout);
-		self._timeout = setTimeout(self.update, settings.updateInterval);
+		if ('function' == typeof callback) {
+			callback();
+		}
 	}
 };
 
-function getWeather () {
+function getWeather (callback) {
 	var _wc = settings.weatherConfig;
 	var weather = null;
 	yahooWeather({lat: _wc.lat, long: _wc.long}, function(data) {
@@ -70,14 +65,12 @@ function getWeather () {
 		}
 		weather.textcode = ret;
 		weather.location = _wc.name;
-		Elis.locals.weather = weather;
-		console.log('got weather');
+		callback(weather);
 	});
-	
 }
 
 
-function getReddit () {
+function getReddit (callback) {
 	var _rc = settings.redditConfig;
 	var options = {
 	  host: 'www.reddit.com',
@@ -91,16 +84,16 @@ function getReddit () {
 	  	htoutput += raw.toString();
 		}).on('end', function() {
 			var data = JSON.parse(htoutput);
-			Elis.locals.reddit = data;
-			console.log('got reddit');
+			callback(data);
 		});
 	}).on('error', function(e) {
 	  console.log("Reddit got error: " + e.message);
+	  callback(e);
 	});
 }
 
 
-function getBitcoin () {
+function getBitcoin (callback) {
 	var _bc = settings.bitcoinConfig;
 	var options = {
 		host: 'bitcoincharts.com',
@@ -119,9 +112,10 @@ function getBitcoin () {
 				console.log('bit error', e);
 				var data = {};
 			}
-			Elis.locals.bitcoin = data;
+			callback(data);
 			console.log('got bitcoin');
 		}).on('error', function (e) {
+			callback(e);
 			console.log('Bitcoin got error: ' + e.message);
 		});
 	});

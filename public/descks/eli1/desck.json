@@ -1,3 +1,16 @@
 {
-	"name": "Eli's Testing Desck"
+	"name": "Eli's Testing Desck",
+	"weatherConfig": {
+		"lat": 32.0975,
+		"long": 34.8139,
+		"name": "Tel Aviv, Israel"
+	},
+	"bitcoinConfig": {
+		
+	},
+	"redditConfig": {
+		"user": "the-ace"
+	},
+	
+	"something": "else"
 }

@@ -14,7 +14,8 @@ var express = require('express')
  */
 var routes = require('./routes')(debug)
   , assemble = require('./routes/assemble')(debug)
-  , helpers = require('./desckit.helpers')(debug)
+  , helpers = require('./lib/desckit.helpers')(debug)
+  , config = require('./config/default')
   ;
 
 require('datejs');
@@ -27,6 +28,7 @@ app.configure(function(){
     app.set('view engine', 'ejs');
     app.use(express.favicon());
     app.use(function(req, res, next){
+        req.conf = config;
         debug('%s %s', req.method, req.url);
         next();
     });
