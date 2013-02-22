@@ -4,6 +4,26 @@
 
 Custom desktop wallpaper generator with NodeJS and PhantomJS
 
+## Changelog
+
+### Version 0.0.5
+
+* Refactored a bunch of code, much cleaner now, and better running
+
+* Added support for rendering multiple descks at the same time
+
+* Changed output directory of rendered descks to `/desckit/public/cache/[DESCK_NAME]` where `[DESCK_NAME]` is the desck used to generate the output
+
+* ImageMagick is now required to visit the front-end
+
+* New front-end: ![Front-End](http://i.imgur.com/wvWSsXC.png)
+
+## Preview / Example Output
+
+Based on `eli1` desck
+
+![Example output][http://i.imgur.com/frXoMT6.jpg]
+
 ## Installation
 
  - Install [Node.js](http://nodejs.org/download/)
@@ -26,7 +46,7 @@ Once ready, navigate your browser to `http://localhost:1280/descks/wide/display`
 To generate a desktop wallpaper append `render` to the url (like so: `http://localhost:1280/descks/wide/render` which will create a new file (or overwrite existing one) in `/desckit/public/cache/wide/` directory.
 
 ### Windows Configuration
-
+asd
 To display your wallpaper in Windows 7/8 use the built in wallpaper rotation tool.
 
  1. Right click anywhere on your descktop
