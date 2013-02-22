@@ -1,3 +1,7 @@
+<? console.log('\n\n\nDebug from descks.ejs\n\n\n');
+console.log(descks); 
+console.log(Array(60).join('='));
+?>
 <div class="row">
 	<div class="span2">
 		<ul class="nav nav-list">
@@ -6,47 +10,30 @@
 	  <li><a href="#">Library</a></li> -->
 		</ul>
 	</div>
-	<!-- 
-	Right now it displays a simple list of all existing descks.
-	At a later point in time I want it to display a thumbnail of the
-	rendered descks for improved visiuals and user experience.
-	-->
-	<div class="span10">
-		<div class="content">
-			<? if (descks && descks.length > 0) { ?> 
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Path</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<? for (i = 0; i < descks.length; ++i) {
-						var desck = descks[i];
-						
-					?>
-					<tr>
-						<td><?= desck.name ?></td>
-						<td><?= desck.path ?></td>
-						<td>
-							<div class="btn-group">
-								<a href="/assemble/<?= desck.id ?>" class="btn btn-small"><i class="icon-eye-open"></i> Preview</a>
-								<a href="/assemble/<?= desck.id ?>/thumbnail" class="btn btn-small"><i class="icon-globe"></i> Thumbnail</a>
-								<!-- <a href="/descks/<?= desck.id ?>/edit" class="btn btn-small "><i class="icon-pencil"></i> Edit</a> -->
-							</div>
-						</td>
-					</tr>
-					<? } ?>
-				</tbody>
-			</table>
-			<? } else { ?>
-				<div class="alert">
-				  <button type="button" class="close" data-dismiss="alert">&times;</button>
-				  There are no descks in your directory. Please create at least one
-				</div>
-			<? } ?>
-		</div>
+	
+	<div class="descksDisplay span10">
+		<? if (descks && descks.length > 0) { ?> 
+			<h2>Installed Descks</h2>
+			<ul class="thumbnails">
+				<? for (i = 0; i < descks.length; ++i) {
+				var desck = descks[i];
+			
+				var width = i == 0 ? 460 : 
+					(i % 3) ? 300 :
+					140;
+				
+				var height = i == 0 ? 280 : 130;
+				var span = i == 0 ? 6 :
+					(i % 3) ? 4 :
+					2;
+				?>
+				<li class="span<?= span ?>">
+					<a href="/descks/<?= desck.name ?>/display">
+						<img style="width: <?= width ?>px; height: <?= height ?>px" src="/descks/<?= desck.name?>/thumbnail/<?= width + 'x' + height?>" class="img-rounded" />
+					</a>
+				</li>
+				<? } ?>
+			</ul>
+		<? } ?>
 	</div>
 </div>

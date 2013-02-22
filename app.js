@@ -9,21 +9,28 @@ var express = require('express')
   , path = require('path')
   , debug = require('debug')('desckit')
 
+global.appPath = __dirname;
+
 /**
  * Our modules
  */
-var routes = require('./routes')(debug)
-  , assemble = require('./routes/assemble')(debug)
-  , helpers = require('./lib/desckit.helpers')(debug)
+var routes = require('./routes')
   , config = require('./config/default')
   ;
 
+config.appUrl = 'http://' + process.env.COMPUTERNAME + (config.port != 80 ? ':'+config.port : '');
+
 require('datejs');
-  
+
+require('./lib/desckit').useConfig(config);
+
+routes.useConfig(config);
+
+
 var app = express();
 
 app.configure(function(){
-    app.set('port', process.env.PORT || 1280);
+    app.set('port', process.env.PORT || config.port || 1280);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
     app.use(express.favicon());
@@ -39,7 +46,7 @@ app.configure(function(){
     app.use(app.router);
     app.use(require('stylus').middleware(__dirname + '/public'));
 
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, '/public')));
 
     ejs.open = '<?';
     ejs.close = '?>';
@@ -52,14 +59,16 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/descks', routes.descks);
-app.get('/assemble/:id?/:render?/:reload?', assemble.request);
+app.get('/descks/:desckName/thumbnail/:width', routes.desckThumbnail);
+app.get('/descks/:desckName/display', routes.displayDesck);
+app.get('/descks/:desckName/render', routes.renderDesck);
 
 http.createServer(app).listen(app.get('port'), function(){
     debug("Express server listening on port " + app.get('port'));
-    if (!process.env.DEBUG) {
+    if (process.env.DEBUG) {
       // Open the base URL
-      var open = require('open');
-      open('http://' + process.env.COMPUTERNAME + (app.get('port') != 80 ? ':'+app.get('port') : ''));
+      // var open = require('open');
+      // open(config.appUrl);
     }
 });
 

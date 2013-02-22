@@ -2,7 +2,7 @@
 var	yahooWeather = require('weather')
 	, http = require('http');
 	
-	
+var counter = 0;
 var settings = {
 	updateInterval: 10*60*1000,
 	weatherConfig: {
@@ -34,14 +34,12 @@ var Elis = {
 		}
 		self.last_update = now;
 		
-		getWeather();
-		getReddit();
-		getBitcoin();
-		
 		console.log('getting them...');
 		
 		clearTimeout(self._timeout);
 		self._timeout = setTimeout(self.update, settings.updateInterval);
+		self.locals.counter = counter++;
+		self.locals.date = date;
 	}
 };
 

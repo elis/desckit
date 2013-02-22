@@ -1,10 +1,13 @@
 // script.js
 var	yahooWeather = require('weather')
 	, http = require('http')
+	, _ = require('underscore')
 	, debug = require('debug')('desckit:eli1');
 	
 	
 var settings = {};;
+var last_update = 0;
+var locals = {};
 
 var Elis = module.exports = {
 	_timeout: null,
@@ -15,24 +18,26 @@ var Elis = module.exports = {
 		
 		settings = this.conf;
 		
-		this.locals.date = date;
+		locals.date = date;
 		
-		if (now < self.last_update + settings.updateInterval) {
-			return true;
+		debug('Last update:', last_update);
+		debug('diff:', now - last_update);
+		if (now - last_update >= 60000) {
+			debug('getting stuff...');
+			getWeather(function (weather) {
+				locals.weather = weather;
+			});
+			getReddit(function (reddit) {
+				locals.reddit = reddit; 
+			});
+			getBitcoin(function (bitcoin) {
+				locals.bitcoin = bitcoin;
+			});
+			
+			last_update = now;
 		}
-		self.last_update = now;
 		
-		getWeather(function (weather) {
-			self.locals.weather = weather;
-		});
-		getReddit(function (reddit) {
-			self.locals.reddit = reddit; 
-		});
-		getBitcoin(function (bitcoin) {
-			self.locals.bitcoin = bitcoin;
-		});
-		
-		console.log('getting them...');
+		_.extend(self.locals, locals);
 		
 		if ('function' == typeof callback) {
 			callback();

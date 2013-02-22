@@ -31,6 +31,7 @@ var foggy = {
         
         clearTimeout(self._timeout);
         self._timeout = setTimeout(self.update, settings.updateInterval);
+        self.locals.date = date;
     }
 };
 

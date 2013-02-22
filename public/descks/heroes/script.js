@@ -11,7 +11,9 @@ var settings = {
     }
 };
 
-var foggy = {
+var counter = 0;
+
+var heroes = {
     locals: {},
     _timeout: null,
     update: function () {
@@ -25,12 +27,11 @@ var foggy = {
         }
         self.last_update = now;
         
-        getWeather();
-        
         console.log('getting them...');
         
         clearTimeout(self._timeout);
         self._timeout = setTimeout(self.update, settings.updateInterval);
+        self.locals.counter = counter++;
     }
 };
 
@@ -59,10 +60,10 @@ function getWeather () {
         }
         weather.textcode = ret;
         weather.location = _wc.name;
-        foggy.locals.weather = weather;
+        heroes.locals.weather = weather;
         console.log('got weather');
     });
     
 }
 
-module.exports = foggy;
+module.exports = heroes;

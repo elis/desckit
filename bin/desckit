@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+
+
 // turn on the server
 var app = require(__dirname + '/../app.js');
 
@@ -39,7 +41,7 @@ function continual(url, interval) {
 
 
 // build the url to request and add in the style name
-var url = "http://localhost:1280/assemble/";
+var url = "http://localhost:1280/descks/";
 url += program.style;
 url += "/render";
 
