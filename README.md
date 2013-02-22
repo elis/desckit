@@ -1,12 +1,14 @@
 # Desckit
 
 ![Desckit](https://raw.github.com/elis/desckit/master/public/images/logo.png)
+
 Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 ## Installation
 
  - Install [Node.js](http://nodejs.org/download/)
  - Install [PhantomJS](http://phantomjs.org/download.html)
+ - Install [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)
 
 For Windows, please place the `phantomsjs.exe` on your `PATH`.
 
@@ -19,11 +21,9 @@ $ npm install
 $ node .
 ```
 
-Once ready, navigate your browser to `http://localhost:1280/assemble/wide/` to preview the `wide` script and it's output.
+Once ready, navigate your browser to `http://localhost:1280/descks/wide/display` to preview the `wide` script and it's output.
 
-To generate a desktop wallpaper append `render` to the url (like so: `http://localhost:1280/assemble/wide/render/` which will create a new file (or overwrite existing one) in `/desckit/walls/` directory.
-
-There is a simple reload mechanism that will generate the wallpaper in intervals if you append a seconds interval to the end of the url (like so: `http://localhost:1280/assemble/wide/render/60`) which will reload the page once every 60 seconds.
+To generate a desktop wallpaper append `render` to the url (like so: `http://localhost:1280/descks/wide/render` which will create a new file (or overwrite existing one) in `/desckit/public/cache/wide/` directory.
 
 ### Windows Configuration
 
@@ -33,7 +33,7 @@ To display your wallpaper in Windows 7/8 use the built in wallpaper rotation too
  2. Select `Personalize` (the lower-most item)
  3. Select `Desktop Background` in the bottom area of the window
  4. Click on `Browse...` next to `Picture location:` dropdown
- 5. Locate and select the `/desckit/walls` directory
+ 5. Locate and select the `/desckit/public/cache/[DESCK_NAME]` directory where `[DESCK_NAME]` is the style you want to use
  6. Select the update interval (I use 1 minute), make sure `Shuffle` is not marked
  7. Click `Save changes`
 
@@ -46,7 +46,7 @@ To display your wallpaper in Mac OSX use the built in wallpaper rotation tool.
  1. Open `System Preferences`
  2. Select `Desktop & Screen Save` (in the top-left area)
  3. Click the `+` button to choose a folder
- 4. Locate and select the `/desckit/walls` directory.
+ 4. Locate and select the `/desckit/public/cache/[DESCK_NAME]` directory where `[DESCK_NAME]` is the style you want to use
  5. Select the `Change picture:` interval make sure `Random order` is not selected
 
 If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
@@ -54,9 +54,11 @@ If you configured the application correctly you will now see the generated wallp
 
 ## Custom Scripts
 
-The application supports custom scripts to be created. To see existing scripts navigate to `/desckit/public/scripts/`. Right now there are two scripts, `eli1` and `wide`.
+The application supports custom scripts to be created. To see existing scripts navigate to `/desckit/public/descks/`. Right now there are two scripts, `eli1` and `wide`.
 
-### Script Files
+### A Desck (AKA Script Files)
+
+To create a desck you will need to create a new directory in `/desckit/public/descks` with your name of choise, and put a `desck.json` in it (feel free to copy from `eli1` desck).
 
 There are currently 2 mandatory script files:
 
@@ -114,9 +116,8 @@ Since this is being rendered on a WebKit based browser, basically anything that 
 To see the internals of desckit as it operates, set an environment variable for `DEBUG` equal to `desckit`, such as:
 
 ```shell
-$ DEBUG=desckit node-dev app.js 
+$ DEBUG=desckit* node-dev app.js 
   desckit Express server listening on port 1280 +0ms
-  desckit GET /assemble/foggy/render/10 +1s
 ```
 
 We do this to help the command-line tool version output clean.
