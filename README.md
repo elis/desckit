@@ -22,7 +22,7 @@ Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 Based on `eli1` desck
 
-![Example output][http://i.imgur.com/frXoMT6.jpg]
+![Example output](http://i.imgur.com/frXoMT6.jpg)
 
 ## Installation
 
