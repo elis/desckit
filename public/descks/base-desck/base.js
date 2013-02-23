@@ -109,6 +109,10 @@ var base = module.exports = {
 			this.conf.reddit || {},
 			config.reddit || {});
 		
+		if (!options.username) {
+			callback('Reddit username is not defined', null);
+			return;
+		}
 		options.path = options.path.replace('%username%', options.username || 'YOU FORGOT TO DEFINE YOUR REDDIT USERNAME');
 		
 		debug('Ready to fetch reddit with options:', options);
