@@ -12,7 +12,7 @@ var program = require('commander');
 program
     .version('0.0.0')
     .option('-I, --interval [seconds]', 'The number of seconds between renders [default: 60]', '60')
-    .option('-S, --style [name]', 'The style of desktop that you want to render [default: wide]', 'wide')
+    .option('-S, --style [name]', 'The style of desktop that you want to render [default: base-desck]', 'base-desck')
     // .option('-W, --width', 'The width in pixels of the desktop [default: 1920]', '1920')
     // .option('-H, --height', 'The height in pixels of the desktop [default: 1080]', '1080')
     .on('--help', function(){

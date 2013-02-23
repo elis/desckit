@@ -1,3 +1,5 @@
 phantomjs.exe
 node_modules/
 walls/
+config/runtime.json
+public/cache/

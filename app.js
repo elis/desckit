@@ -15,7 +15,7 @@ global.appPath = __dirname;
  * Our modules
  */
 var routes = require('./routes')
-  , config = require('./config/default')
+  , config = require('config')
   ;
 
 config.appUrl = 'http://' + process.env.COMPUTERNAME + (config.port != 80 ? ':'+config.port : '');
@@ -25,7 +25,6 @@ require('datejs');
 require('./lib/desckit').useConfig(config);
 
 routes.useConfig(config);
-
 
 var app = express();
 

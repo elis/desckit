@@ -1,0 +1,10 @@
+{
+	"templateFile": "base.ejs",
+	"scriptFile": "base.js",
+	"stylesheetFile": "base.css",
+	"reddit": {
+	  "host": "www.reddit.com",
+	  "port": 80,
+	  "path": "/user/%username%/about.json"
+	}
+}

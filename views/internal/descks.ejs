@@ -6,7 +6,9 @@
 	  <li><a href="#">Library</a></li> -->
 		</ul>
 	</div>
-	
+	<script>
+		var descks = <?- JSON.stringify(descks) ?>;
+	</script>
 	<div class="descksDisplay span10">
 		<? if (descks && descks.length > 0) { ?> 
 			<h2>Installed Descks</h2>

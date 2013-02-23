@@ -34,14 +34,23 @@ routes.renderDesck = function (req, res) {
     if (err) { throw err; }
     counter[desck.name] = counter[desck.name] ? counter[desck.name] + 1 : 1;
     
-    var filename = (counter[desck.name] % 2 ? 'a' : 'b') + '.png';
+    var renderPath = config.cachePath + '/' + desck.name
+      , filename = (counter[desck.name] % 2 ? 'a' : 'b') + '.png';
+    
+    if (!fs.existsSync(renderPath)) {
+      fs.mkdirSync(renderPath);
+    }
+    
     desckit.renderToFile({
       url: config.appUrl + '/descks/' + desck.name + '/display',
       outputFile: config.cachePath + '/' + desck.name + '/' + filename
     }, function (err, output) {
       if (err) { throw err; }
       setTimeout(function(){
-        res.json([output]);
+        res.json({
+          localFile: output, 
+          url: config.appUrl + '/cache/' + desck.name + '/' + filename
+        });
         // res.redirect('/cache/' + desck.name + '/' + filename);
       }, config.renderWriteTime);
     })
@@ -59,11 +68,12 @@ routes.descks = function (req, res, next) {
   });
 };
 
-routes.displayDesck = function (req, res) {
+routes.displayDesck = function (req, res, next) {
   desckit.getDesckByName(req.params.desckName, function (err, desck) {
-    if (err) { throw err; }
+    if (err) { next(err); return; }
+    
     desckit.compileDesck(desck, function (err, output) {
-      if (err) { throw err; }
+      if (err) { next(err); return; }
       res.render('desckit-page', _.extend({}, renderOptions, {
         output: output,
         desck: desck
