@@ -66,10 +66,16 @@ var base = module.exports = {
 		});
 	},
 	
+	defaultWeatherOptions: {
+		"lat": 32.0975,
+		"long": 34.8139
+	},
 	
 	getWeather: function (callback) {
 		var yahooWeather = require('weather')
 			, options = _.extend({}, this.defaultWeatherOptions, this.conf.weather || {}, config.weather || {});
+		
+		debug('Ready to fetch weather with options:', options);
 		
 		yahooWeather(options, function(data) {
 			var weather = data;
