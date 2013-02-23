@@ -6,6 +6,11 @@ Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 ## Changelog
 
+### Version 0.0.51
+
+* Removed old deskcs, and created a new one called `base-desck`, check it out if you're looking to create your own descks
+* Fixed some problems with Desck object and rendering (see #9)
+
 ### Version 0.0.5
 
 * Refactored a bunch of code, much cleaner now, and better running
@@ -20,7 +25,7 @@ Custom desktop wallpaper generator with NodeJS and PhantomJS
 
 ## Preview / Example Output
 
-Based on `eli1` desck
+Based on `base-desck` desck
 
 ![Example output](http://i.imgur.com/frXoMT6.jpg)
 
@@ -41,9 +46,9 @@ $ npm install
 $ node .
 ```
 
-Once ready, navigate your browser to `http://localhost:1280/descks/wide/display` to preview the `wide` script and it's output.
+Once ready, navigate your browser to `http://localhost:1280/descks/base-desck/display` to preview the `base-desck` desck and it's output.
 
-To generate a desktop wallpaper append `render` to the url (like so: `http://localhost:1280/descks/wide/render` which will create a new file (or overwrite existing one) in `/desckit/public/cache/wide/` directory.
+To generate a desktop wallpaper append `render` to the url (like so: `http://localhost:1280/descks/base-desck/render` which will create a new file (or overwrite existing one) in `/desckit/public/cache/base-desck/` directory.
 
 ### Windows Configuration
 asd
@@ -74,11 +79,13 @@ If you configured the application correctly you will now see the generated wallp
 
 ## Custom Scripts
 
-The application supports custom scripts to be created. To see existing scripts navigate to `/desckit/public/descks/`. Right now there are two scripts, `eli1` and `wide`.
+The application supports custom scripts to be created.
+
+See `/public/descks/base-desck/` to get started with creating your own descks. The best way to get started with Desckit is by hacking away at that desck.
 
 ### A Desck (AKA Script Files)
 
-To create a desck you will need to create a new directory in `/desckit/public/descks` with your name of choise, and put a `desck.json` in it (feel free to copy from `eli1` desck).
+To create a desck you will need to create a new directory in `/desckit/public/descks` with your name of choise, and put a `desck.json` in it (a good starting point would be to copy `base-desck` desck).
 
 There are currently 2 mandatory script files:
 
@@ -99,24 +106,22 @@ You can run desckit from the command line as well.  This will be the prefered op
 $ npm install -g desckit
 ```
 
-To render the `eli1` script only one time (think cron)
+To render the `base-desck` script only one time (think cron)
 
 ```
-$ desckit -S eli1 
+$ desckit -S base-desck 
 ```
 
 To re-render every two minutes, specify an interval of 120 seocnds:
 
 ```
-$ desckit -S eli1 -I 120
+$ desckit -S base-desck -I 120
 ```
-
-This will create a `walls` directory wherever you run the command.
 
 
 # Examples
 
-The two provided examples are `eli1` and `wide`, the main difference is that `wide`-version is created from a wide background image which is scrolled a little bit every time a wallpaper generate, so once it's on desktop it shows a wallpaper that moves just slightly, and creates a more dynamic desktop environment.
+There is one provided example at the moment named `base-desck` that you can use to play around with the application.
 
 ## Possibilities
 
