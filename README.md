@@ -4,6 +4,10 @@
 
 Custom desktop wallpaper generator with NodeJS and PhantomJS
 
+***
+March 2013: [Desckit is hiring](https://github.com/elis/desckit/wiki/hiring)
+***
+
 ## Changelog
 
 ### Version 0.0.51
