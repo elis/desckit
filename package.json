@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "commander": "~1.1.1",
-    "config": "~0.4.20",
+    "config": "^1.14.0",
     "datejs": "0.0.2",
     "debug": "~0.7.2",
     "ejs": "~0.8.3",

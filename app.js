@@ -8,20 +8,18 @@ var express = require('express')
   , ejs = require('ejs')
   , path = require('path')
   , debug = require('debug')('desckit')
+  , config = require('config')
 
 global.appPath = __dirname;
 
 /**
  * Our modules
  */
-var routes = require('./routes')
-  , config = require('config')
-  ;
+var routes = require('./routes');
 
 config.appUrl = 'http://' + process.env.COMPUTERNAME + (config.port != 80 ? ':'+config.port : '');
 
 require('datejs');
-
 require('./lib/desckit').useConfig(config);
 
 routes.useConfig(config);

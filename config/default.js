@@ -1,7 +1,9 @@
+var path = require('path')
+
 module.exports = {
-	descksPath: __dirname + '/../public/descks',
-	tempPath: __dirname + '/temp',
-	cachePath: __dirname + '/../public/cache',
+	descksPath: path.resolve(__dirname, '..', 'public/descks'),
+	tempPath: path.resolve(__dirname, 'temp'),
+	cachePath: path.resolve(__dirname, '..', 'public/cache'),
 	port: 1280,
 	options: {
 		exportWidth: 1920,

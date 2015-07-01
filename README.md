@@ -68,6 +68,8 @@ To display your wallpaper in Windows 7/8 use the built in wallpaper rotation too
 
 If you configured the application correctly you will now see the generated wallpaper showing on your desktop.
 
+You might run into some issues running phantomjs on windows properly (make sure you follow all the recommended installations steps as seen on node-gyp repo), in which case installing phantom with the following flags might be helpful: `$ npm install phantom -msvs_version=2012`
+
 ### Mac OS X Configuration
 
 To display your wallpaper in Mac OSX use the built in wallpaper rotation tool.
