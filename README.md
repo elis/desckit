@@ -4,10 +4,6 @@
 
 Custom desktop wallpaper generator with NodeJS and PhantomJS
 
-***
-March 2013: [Desckit is hiring](https://github.com/elis/desckit/wiki/hiring)
-***
-
 ## Changelog
 
 ### Version 0.0.6
@@ -16,23 +12,7 @@ March 2013: [Desckit is hiring](https://github.com/elis/desckit/wiki/hiring)
 * Added option to set the generated images as wallpapers - only windows support for now I'm afraid, I'm only working on a windows machine, so if you want other platforms support, feel free to write a few lines of code and send a pull request!
 * Changed the weather module from Yahoo! weather to forecast.io
 
-
-### Version 0.0.51
-
-* Removed old deskcs, and created a new one called `base-desck`, check it out if you're looking to create your own descks
-* Fixed some problems with Desck object and rendering (see #9)
-
-### Version 0.0.5
-
-* Refactored a bunch of code, much cleaner now, and better running
-
-* Added support for rendering multiple descks at the same time
-
-* Changed output directory of rendered descks to `/desckit/public/cache/[DESCK_NAME]` where `[DESCK_NAME]` is the desck used to generate the output
-
-* ImageMagick is now required to visit the front-end
-
-* New front-end: ![Front-End](http://i.imgur.com/wvWSsXC.png)
+[Earlier versions](https://github.com/elis/desckit/wiki/Change-Log)
 
 ## Preview / Example Output
 
@@ -174,13 +154,11 @@ At this point the application is in preview/alpha version designed to show the c
 
 The goals for this project are:
 
- 1. Createa community around the project
- 2. Create a simple and easy to use way to generate custom wallpapers using a Wysiwyg style designer
- 3. Create modular widgets that could be configured to the users needs and wants
- 4. Create integration with sites like Github, CSSDeck, jsfiddle along with an internal way to store users styles/designs
- 5. Create a gallery of designs with ranking so users who are not into creating their own custom design could select an existing design, add or remove certain modules, and use it without hacking any code
- 6. Provide an easy API to allow use of the software on mobile phones and tablets
-
+ 1. Create a simple and easy to use way to generate custom wallpapers using a Wysiwyg style designer
+ 2. Create modular widgets that could be configured to the users needs and wants
+ 3. Create integration with sites like Github, CSSDeck, jsfiddle along with an internal way to store users styles/designs
+ 4. Create a gallery of designs with ranking so users who are not into creating their own custom design could select an existing design, add or remove certain modules, and use it without hacking any code
+ 5. Provide an easy API to allow use of the software on mobile phones and tablets
 This is the very first step, unveiling the concept idea, and showing the very rudimentary capabilities, the next step will be decided by you, the user.
 
 ## Contact
