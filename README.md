@@ -10,6 +10,13 @@ March 2013: [Desckit is hiring](https://github.com/elis/desckit/wiki/hiring)
 
 ## Changelog
 
+### Version 0.0.6
+
+* Updated code and dependencies for modern libs - the code-rot is real, folks
+* Added option to set the generated images as wallpapers - only windows support for now I'm afraid, I'm only working on a windows machine, so if you want other platforms support, feel free to write a few lines of code and send a pull request!
+* Changed the weather module from Yahoo! weather to forecast.io
+
+
 ### Version 0.0.51
 
 * Removed old deskcs, and created a new one called `base-desck`, check it out if you're looking to create your own descks
@@ -122,6 +129,12 @@ To re-render every two minutes, specify an interval of 120 seocnds:
 
 ```
 $ desckit -S base-desck -I 120
+```
+
+To automatically set the generated file as wallpaper (currently supports only windows)
+
+```
+$ desckit -W
 ```
 
 
