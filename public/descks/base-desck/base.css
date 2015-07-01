@@ -50,11 +50,10 @@ body {
   font: normal 40px 'DitedRegular', cursive;
   text-transform: uppercase;
 }
-#weather .icon {
+#weather .forecast-icon {
   position: absolute;
-  left: -64px;
-  top: 8px;
-  height: 64px;
+  left: -45px;
+  top: 3px;
 }
 #weather .now,
 #weather .high,
