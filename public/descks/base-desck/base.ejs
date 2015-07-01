@@ -8,14 +8,12 @@
       </div>
 
       
-      <? if (typeof weather == 'object' && weather.temp) { ?>
-      <div id="weather" class="wc-<?= weather.code ?>">
-            <img src="/images/weather/<?= weather.textcode ?>.png" class="icon" />
-            <span class="now"><?= weather.temp ?></span>
-            <span class="high"><?= weather.high ?></span>
-            <span class="low"><?= weather.low ?></span>
-            <span class="text"><?= weather.text ?></span>
-            <span class="location"><?= weather.location ?></span>
+      <? if (typeof weather == 'object' && weather.currently) { ?>
+      <div id="weather" class="wc-<?= weather.currently.icon ?>">
+            <img src="/images/weather/<?= weather.currently.icon.replace('-day', '') ?>.png" class="icon" />
+            <span class="now"><?= weather.currently.temperature ?></span>
+            <span class="text"><?= weather.currently.summary ?></span>
+            <span class="location"><?= weather.timezone ?></span>
       </div>
       <? } ?>
       

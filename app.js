@@ -64,6 +64,7 @@ app.get('/descks/:desckName/render', routes.renderDesck);
 
 http.createServer(app).listen(app.get('port'), function(){
     debug("Express server listening on port " + app.get('port'));
+    console.log('Desckit is now running on port:', app.get('port'), ' - open your browser and navigate to http://localhost:' + app.get('port'));
     if (process.env.DEBUG) {
       // Open the base URL
       // var open = require('open');

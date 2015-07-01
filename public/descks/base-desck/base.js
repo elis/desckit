@@ -72,34 +72,20 @@ var base = module.exports = {
 	},
 	
 	getWeather: function (callback) {
-		var yahooWeather = require('weather')
-			, options = _.extend({}, this.defaultWeatherOptions, this.conf.weather || {}, config.weather || {});
-		
+		var Forecast = require('forecast');
+		var forecast = new Forecast({
+			service: 'forecast.io',
+			key: config.keys.forecast,
+			units: 'celcius'
+		});
+
+
+		var options = _.extend({}, this.defaultWeatherOptions, this.conf.weather || {}, config.weather || {});
 		debug('Ready to fetch weather with options:', options);
-		
-		yahooWeather(options, function(data) {
-			var weather = data;
-			var ret = '';
-			switch (weather.code) {
-				case '29':
-					ret = "night-morecloudy";
-					break;
-				case 30:
-					ret = "morecloudy";
-					break;
-				case 33:
-					ret = "night-barelycloudy";
-					break;
-				case 34:
-					ret = "barelycloudy";
-					break;
-				default:
-					ret = "clear";
-					break;
-			}
-			weather.textcode = ret;
-			weather.location = options.name;
-			callback(null, weather);
+
+		forecast.get([options.lat, options.long], function (err, weather) {
+			console.log('Result of weather forecast request:', weather);
+			callback(err, weather);
 		});
 	},
 	
