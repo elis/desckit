@@ -10,7 +10,9 @@
       
       <? if (typeof weather == 'object' && weather.currently) { ?>
       <div id="weather" class="wc-<?= weather.currently.icon ?>">
-            <img src="/images/weather/<?= weather.currently.icon.replace('-day', '') ?>.png" class="icon" />
+            <!-- <img src="/images/weather/<?= weather.currently.icon.replace('-day', '') ?>.png" class="icon" /> -->
+
+          <span class="forecast-icon forecast-icon-<?= weather.currently.icon ?>"></span>
             <span class="now"><?= weather.currently.temperature ?></span>
             <span class="text"><?= weather.currently.summary ?></span>
             <span class="location"><?= weather.timezone ?></span>

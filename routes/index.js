@@ -1,15 +1,16 @@
 var _ = require('underscore')
   , fs = require('fs')
+  , path = require('path')
   , debug = require('debug')('desckit:routes')
   , desckit = require('../lib/desckit')
-  ;
+
 /*
  * GET home page.
  */
 
 var routes = module.exports = {};
 var config = routes.config = {
-  cachePath: __dirname + '../cache'
+  cachePath: path.resolve(__dirname, '../public/cache')
 };
 var renderOptions = {
   config: config,
@@ -33,26 +34,48 @@ routes.renderDesck = function (req, res) {
   desckit.getDesckByName(req.params.desckName, function (err, desck) {
     if (err) { throw err; }
     counter[desck.name] = counter[desck.name] ? counter[desck.name] + 1 : 1;
+  
+
+    var setWallpaper = !!req.query.set;
     
-    var renderPath = config.cachePath + '/' + desck.name
-      , filename = (counter[desck.name] % 2 ? 'a' : 'b') + '.png';
-    
+    if (setWallpaper) debug('Setting wallpaper to system...');
+
+    var renderPath = path.resolve(config.cachePath, desck.name)
+      , filename = (counter[desck.name] % 2 ? 'a' : 'b') + '.png'
+      , fullname = path.resolve(config.cachePath, desck.name, filename);
+
     if (!fs.existsSync(renderPath)) {
       fs.mkdirSync(renderPath);
     }
+
+    debug('Begin desck rendering...');
     
     desckit.renderToFile({
       url: config.appUrl + '/descks/' + desck.name + '/display',
       outputFile: config.cachePath + '/' + desck.name + '/' + filename
     }, function (err, output) {
+      debug('Result of rendering:', err, output);
       if (err) { throw err; }
-      setTimeout(function(){
-        res.json({
-          localFile: output, 
-          url: config.appUrl + '/cache/' + desck.name + '/' + filename
-        });
+      var endit = function(){
+        // setTimeout(function() {
+          res.json({
+            localFile: output, 
+            url: config.appUrl + '/cache/' + desck.name + '/' + filename,
+            systemWallpaper: setWallpaper
+          })
+        // }, config.renderWriteTime);
         // res.redirect('/cache/' + desck.name + '/' + filename);
-      }, config.renderWriteTime);
+      };
+
+      if (setWallpaper) {
+        debug('Setting "%s" file as wallpaper...', fullname);
+        setTimeout(function() {
+          desckit.setImageAsWallpaper(fullname, function () {
+            endit();
+          });
+
+        }, config.renderWriteTime)
+      } else endit();
     })
   });
 }
@@ -87,8 +110,9 @@ routes.desckThumbnail = function (req, res, next) {
     , width = req.params.width.split('x')[0]
     , thumbPath = '/thumbnails/' + desckName + '-' + width + '.png'
     ;
-  
-  debug('exists?', fs.existsSync(config.cachePath + '/' + desckName + '/a.png'));
+  debug('Generate Desck Thumbnail');
+  // debug('Thumbnail exists? %s', fs.existsSync(config.cachePath + '/' + desckName + '/a.png'));
+  // debug('Render exists? [%s] exists? [%s]', path.resolve(config.cachePath, desckName, 'a.png'), fs.existsSync(path.resolve(config.cachePath, desckName, 'a.png')))
   // See if in cache
   if (fs.existsSync(config.cachePath + thumbPath)) {
     res.redirect('/cache/' + thumbPath);
@@ -100,7 +124,7 @@ routes.desckThumbnail = function (req, res, next) {
   }
   
   // See if rendered exists and resize it
-  else if (fs.existsSync(config.cachePath + '/' + desckName + '/a.png')) {
+  else if (fs.existsSync(path.resolve(config.cachePath, desckName, 'a.png'))) {
     debug('file exists, gonna resize');
     desckit.resizeImage({
       srcPath: config.cachePath + '/' + desckName + '/a.png',

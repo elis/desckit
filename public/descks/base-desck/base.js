@@ -1,9 +1,10 @@
+'use strict';
+
 var debug = require('debug')('desckit:Desck:base')
 	, config = require('config')
 	, http = require('http')
 	, _ = require('underscore')
-;
-'use strict';
+	, dafuq = require('debug')('desckit:DAFUQ!')
 
 var base = module.exports = {
 	init: function (callback) {
@@ -72,6 +73,7 @@ var base = module.exports = {
 	},
 	
 	getWeather: function (callback) {
+		if (!config.keys || !config.keys.forecast) { debug('No weather configured, failing'); callback(); return; }
 		var Forecast = require('forecast');
 		var forecast = new Forecast({
 			service: 'forecast.io',
@@ -84,7 +86,7 @@ var base = module.exports = {
 		debug('Ready to fetch weather with options:', options);
 
 		forecast.get([options.lat, options.long], function (err, weather) {
-			console.log('Result of weather forecast request:', weather);
+			debug('Result of weather forecast request:', weather);
 			callback(err, weather);
 		});
 	},
@@ -102,6 +104,7 @@ var base = module.exports = {
 			config.reddit || {});
 		
 		if (!options.username) {
+			debug('No reddit username. failing.');
 			callback('Reddit username is not defined', null);
 			return;
 		}

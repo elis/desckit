@@ -1,0 +1,37 @@
+{
+  "fonts": [
+    "iconvault_7a7be1ebd416f9d3c5acd5b5d82d0741.ttf",
+    "iconvault_7a7be1ebd416f9d3c5acd5b5d82d0741.woff",
+    "iconvault_7a7be1ebd416f9d3c5acd5b5d82d0741.eot",
+    "iconvault_7a7be1ebd416f9d3c5acd5b5d82d0741.svg"
+  ],
+  "templates": [
+    "iconvault-preview.html",
+    "iconvault-preview.css"
+  ],
+  "file_name": "iconvault_7a7be1ebd416f9d3c5acd5b5d82d0741",
+  "glyphs": [
+    "night",
+    "sunny",
+    "frosty",
+    "windysnow",
+    "showers",
+    "basecloud",
+    "cloud",
+    "rainy",
+    "mist",
+    "windysnowcloud",
+    "drizzle",
+    "snowy",
+    "sleet",
+    "moon",
+    "windyrain",
+    "hail",
+    "sunset",
+    "windyraincloud",
+    "sunrise",
+    "sun",
+    "thunder",
+    "windy"
+  ]
+}
