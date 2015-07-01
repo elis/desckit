@@ -86,7 +86,7 @@ var base = module.exports = {
 		debug('Ready to fetch weather with options:', options);
 
 		forecast.get([options.lat, options.long], function (err, weather) {
-			console.log('Result of weather forecast request:', weather);
+			debug('Result of weather forecast request:', weather);
 			callback(err, weather);
 		});
 	},
